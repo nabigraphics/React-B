@@ -11,7 +11,6 @@ const BUILD_DIR = path.resolve(__dirname, "src/public/js");
 const APP_DIR = path.resolve(__dirname, "src/app");
 const SCSS_DIR = path.resolve(__dirname, "src/scss");
 const LESS_DIR = path.resolve(__dirname, "src/less");
-const CSS_DIR = path.resolve(__dirname, "src/public/css");
 
 // Webpack Plugins
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
@@ -20,7 +19,7 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 // Extract SASS
 const extractSass = new MiniCssExtractPlugin({
-  filename: `${CSS_DIR}/[name].css`
+  filename: "../css/[name].css"
 });
 
 // Ant Design Config
@@ -31,8 +30,7 @@ const themeVariables = lessToJs(
 console.log(APP_DIR);
 const config = {
   entry: {
-    index: [`${APP_DIR}/index.jsx`],
-    // style: [`${SCSS_DIR}/index.scss`]
+    index: [`${APP_DIR}/index.jsx`, `${SCSS_DIR}/index.scss`]
   },
 
   output: {
